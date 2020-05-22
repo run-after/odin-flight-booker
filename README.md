@@ -1,24 +1,9 @@
-# README
+Odin Flight Booker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+From The Odin Project(https://www.theodinproject.com/courses/ruby-on-rails/lessons/building-advanced-forms?ref=lnav)
 
-Things you may want to cover:
+"Project: Flight Booker
 
-* Ruby version
+In this project, you’ll get a chance to tackle some more advanced forms. This is the kind of thing you’ll have to work with when handling user orders for anything more complicated than an e-book. "
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+In this project I had more practice with setting up models and associations, controller/view interaction, as well as work with nested forms.
