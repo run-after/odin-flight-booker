@@ -3,11 +3,11 @@
 one:
   arrival_airport: one
   departure_airport: one
-  departure_date: 2020-05-22 11:33:22
+  departure_date: 2020-05-22 13:17:58
   duration: 1
 
 two:
   arrival_airport: two
   departure_airport: two
-  departure_date: 2020-05-22 11:33:22
+  departure_date: 2020-05-22 13:17:58
   duration: 1
