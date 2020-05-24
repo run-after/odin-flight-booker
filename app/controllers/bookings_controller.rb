@@ -3,24 +3,21 @@ class BookingsController < ApplicationController
     @flight = Flight.find(params[:flight_id])
     @num_of_pass = params[:num_of_pass].to_i
     @booking = Booking.new
-    @num_of_pass.times do |num|
-      instance_variable_set("@passenger#{num+1}", Passenger.new)
+    @num_of_pass.times do
+      @booking.passengers.build
     end
   end
 
   def create
-    num_of_pass = params[:booking][:num_of_pass].to_i
-    @booking = Booking.new(booking_params)#flight_id: params[:booking][:flight_id]
+    @flight = Flight.find(params[:booking][:flight_id])
+    @booking = Booking.new(booking_params)
     if @booking.save
-      num_of_pass.times do |num|
-        @booking.passengers.create(name: params[:booking]["@passenger#{num+1}"][:name],
-                                   email: params[:booking]["@passenger#{num+1}"][:email],
-                                   flight_id: @booking.flight_id)
-      end
-    end
-    if @booking.passengers.count == num_of_pass
       redirect_to booking_path(@booking)
+    else
+      flash[:danger] = @booking.errors.full_messages
+      render :new
     end
+    
   end
 
   def show
@@ -29,6 +26,6 @@ class BookingsController < ApplicationController
 
   private
     def booking_params
-      params.require(:booking).permit(:flight_id, passenger_attributes: [:name, :email, :flight_id])
+      params.require(:booking).permit(:flight_id, passengers_attributes:[:name, :email, :flight_id])
     end 
 end

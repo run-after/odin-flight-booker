@@ -1,20 +1,23 @@
 <h1>Create new booking</h1>
-
+<% if @booking.errors.any? %>
+  <% flash[:danger].each do |message| %><br>
+    <%= message %>
+  <% end %>
+<% end %>
+<br><br>
 For flight <%= @flight.id %>: <%= @flight.departure_airport.code %> - <%= @flight.arrival_airport.code %>
 on: <%= @flight.departure_date %><br><br>
 
 <%= form_with model: @booking, local: true do |f| %>
   <%= f.hidden_field :flight_id, value: @flight.id %>
-  <%= f.hidden_field :num_of_pass, value: @num_of_pass %>
 
-  <% @num_of_pass.times do |num|%>
-    <%= f.fields_for "@passenger#{num+1}" do |passenger| %>
+    <%= f.fields_for :passengers do |passenger| %>
+      <%= passenger.hidden_field :flight_id, value: @flight.id %>
       <%= passenger.label :name %><br>
       <%= passenger.text_field :name %><br>
       <%= passenger.label :email %><br>
       <%= passenger.email_field :email %><br><br>
     <% end %>
-  <% end %>
 
   <%= f.submit %>
 <% end %>

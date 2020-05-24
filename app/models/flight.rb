@@ -4,4 +4,7 @@ class Flight < ApplicationRecord
   
   has_many :passengers
   has_many :bookings
+
+  validates :arrival_airport, :departure_airport, 
+            :departure_date, :duration, presence: true
 end
