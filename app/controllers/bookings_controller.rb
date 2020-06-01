@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
     @flight = Flight.find(params[:booking][:flight_id])
     @booking = Booking.new(booking_params)
     if @booking.save
+      PassengerMailer.with(booking: @booking).thank_you_email.deliver_now
       redirect_to booking_path(@booking)
     else
       flash[:danger] = @booking.errors.full_messages
