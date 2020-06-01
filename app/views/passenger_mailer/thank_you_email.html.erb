@@ -7,9 +7,9 @@
     <h1>Thank you for booking your flight, <%= @passenger.name %></h1>
     <p>
       You have successfully booked your flight with the airline.<br>
-      Your departure airport is <%= @booking.flight.departure_airport.code%>.<br>
-      Your arrival airport is <%= @booking.flight.arrival_airport.code%>.<br>
-      The date/time is <%= @booking.flight.departure_date %>.<br>
+      Your departure airport is <%= @passenger.flight.departure_airport.code%>.<br>
+      Your arrival airport is <%= @passenger.flight.arrival_airport.code%>.<br>
+      The date/time is <%= @passenger.flight.departure_date %>.<br>
     </p>
     <p>Thanks for booking and have a great day!</p>
   </body>
